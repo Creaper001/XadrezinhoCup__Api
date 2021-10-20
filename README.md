@@ -1,1 +1,1 @@
-# xadrezinhoCup__Api
+# XadrezinhoCup__Api

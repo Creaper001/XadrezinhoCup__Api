@@ -1,0 +1,32 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Editions {
+  registrations    Registrations[]
+  id               String          @id @default(uuid()) @map("_id")
+  registrationsEnd DateTime
+  createdAt        DateTime        @default(now())
+  active           Boolean         @default(true)
+
+  @@map("editions")
+}
+
+model Registrations {
+  editionsId          String
+  edition            Editions @relation(fields: [editionsId], references: [id])
+  id                  String   @id @default(uuid()) @map("_id")
+  fullName            String
+  email               String
+  cellphone           String
+  lichessName         String
+  allowsNotifications Boolean
+
+  @@map("registrations")
+}
