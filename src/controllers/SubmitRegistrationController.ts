@@ -6,12 +6,13 @@ class SubmitRegistrationController {
     const { fullName, email, cellphone, lichessName, allowsNotifications } =
       request.body;
     const service = new SubmitRegistrationService();
+    const allowsNotificationsBoolean = allowsNotifications === "true";
     const result = await service.execute(
       fullName,
       email,
       cellphone,
       lichessName,
-      allowsNotifications
+      allowsNotificationsBoolean
     );
     response.status(200).json(result);
   }
