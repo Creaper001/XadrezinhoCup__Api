@@ -24,9 +24,6 @@ class SubmitRegistrationService {
         lichessName,
         allowsNotifications,
       },
-      include: {
-        editions: true,
-      },
     });
     return registration;
   }
